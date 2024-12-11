@@ -1,0 +1,25 @@
+GET http://localhost:4000/ping
+
+
+###
+
+POST http://localhost:4000/auth/registrar
+content-type: application/json
+
+{
+    "nome":  "Wesley Machado",
+    "email":"wesley.machado@empresa.com.br",
+    "senha":"#3c5x9cfg",
+    "telefone":"(34) 98443-1247",
+    "barbeiro": false
+}
+
+
+###
+POST http://localhost:4000/auth/login
+content-type: application/json
+
+{
+    "email":"wesley.machado@empresa.com.br",
+    "senha":"#3c5x9cfg"
+}
