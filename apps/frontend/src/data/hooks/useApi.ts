@@ -1,12 +1,21 @@
+import useSessao from "./useSessao";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default function useApi() {
+
+  const {token} =useSessao()
+
   const urlBase = process.env.NEXT_PUBLIC_API_URL;
 
   async function httpGet(caminho: string) {
     const uri = caminho.startsWith("/") ? caminho : `/${caminho}`;
     const urlCompleta = `${urlBase}${uri}`;
 
-    const resposta = await fetch(urlCompleta);
+    const resposta = await fetch(urlCompleta, {
+      headers:{
+        Authorization: `Bearer ${token}`
+      }
+    });
     return extrairDados(resposta);
   }
 
@@ -15,11 +24,12 @@ export default function useApi() {
      const urlCompleta = `${urlBase}${uri}`;
 
      const resposta = await fetch(urlCompleta, {
-        method:'POST',
-        headers:{
-            'Content-Type' : 'application/json'
-        },
-        body: JSON.stringify(body),
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
+       },
+       body: JSON.stringify(body),
      });
      return extrairDados(resposta);
    }
