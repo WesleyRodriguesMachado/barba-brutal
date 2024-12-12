@@ -10,10 +10,10 @@ export class AuthMiddleware implements NestMiddleware {
 constructor(private readonly repo: UsuarioPrisma){}
 
 
-  use(req: any, res: any, next: () => void) {
+  async use(req: any, res: any, next: () => void) {
     const token = req.headers.authorization?.replace('Bearer ', '');
-    console.log('estou no middleware');
-    console.log('token', token);
+    //console.log('estou no middleware');
+   // console.log('token', token);
     try {
       if (!token) {
         throw new HttpException('Token não informado', 401);
@@ -23,7 +23,8 @@ constructor(private readonly repo: UsuarioPrisma){}
       if (!payload) {
         throw new HttpException('Token Invalido', 401);
       }
-      const usuario = this.repo.buscarPorEmail(payload.email)
+      const usuario = await this.repo.buscarPorEmail(payload.email)
+      delete usuario.senha;
 
       if (!usuario) {
         throw new HttpException('Usuario Não econtrado', 401);
