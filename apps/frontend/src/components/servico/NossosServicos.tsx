@@ -1,4 +1,4 @@
-import servicos from "@/data/constants/servicos";
+import { servicos } from "@barbabrutal/core";
 import ItemServico from "./ItemServico";
 import TituloSecao from "../shared/TituloSecao";
 
@@ -11,7 +11,7 @@ export default function NossosServicos() {
         secundario="Cabelo afiado, barba de lenhador e mãos de motoqueiro, tudo ao som de rock pesado!"
       />
 
-      <div className="grid   xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 gap-5">
+      <div className="grid  xl:grid-cols-3 lg:grid-cols-2  grid-cols-1 gap-5">
         {servicos.map((servico) => (
           <ItemServico key={servico.id} servico={servico} />
         ))}
