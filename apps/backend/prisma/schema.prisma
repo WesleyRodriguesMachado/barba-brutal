@@ -11,14 +11,34 @@ datasource db {
 }
 
 model Usuario {
-  id Int @id @default(autoincrement())
-  nome String
-  email String @unique
-  senha String
+  id       Int     @id @default(autoincrement())
+  nome     String
+  email    String  @unique
+  senha    String
   telefone String
   barbeiro Boolean
 
+  @@map("usuarios")
+}
 
-  @@map("usuario")
+model Profissional {
+  id                   Int    @id @default(autoincrement())
+  nome                 String @unique
+  descricao            String
+  imagemURL            String
+  avaliacao            Float
+  quantidadeAvaliacoes Int
 
+  @@map("profissionais")
+}
+
+model Servico {
+  id        Int    @id @default(autoincrement())
+  nome      String @unique
+  descricao String
+  preco     Float
+  qtdeSlots Int
+  imagemURL String
+
+  @@map("servicos")
 }
