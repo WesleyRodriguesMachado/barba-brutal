@@ -7,13 +7,13 @@ const senha = '$2b$10$ly34xC9Cfvtjar3pSpGC2Os5L.FipBzMMxWegqVxEraanLHWryNQW';
 
 async function seed() {
 
- // await prisma.profissional.deleteMany();
+  await prisma.profissional.deleteMany();
   await prisma.profissional.createMany({
     data: profissionais as any,
   });
 
 
-   //await prisma.servico.deleteMany();
+   await prisma.servico.deleteMany();
   await prisma.servico.createMany({
     data: servicos as any,
   });
@@ -36,7 +36,7 @@ async function seed() {
     },
   ];
 
-  //await prisma.usuario.deleteMany();
+  await prisma.usuario.deleteMany();
   await prisma.usuario.createMany({ data: usuarios as any });
 }
 
