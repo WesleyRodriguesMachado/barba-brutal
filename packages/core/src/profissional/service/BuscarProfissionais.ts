@@ -1,6 +1,6 @@
 import CasoDeUso from "../../shared/CasoDeUso";
 import Profissional from "../model/Profissional";
-import RepositorioProfissional from '../provider/RepositorioProfissional'
+import RepositorioProfissional from "../provider/RepositorioProfissional";
 
 export default class BuscarProfissionais
   implements CasoDeUso<void, Profissional[]>
